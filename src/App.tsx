@@ -1,24 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { SpriteAnimator } from './components/sprite-animator/SpriteAnimator';
+import newtonSprite from './img/newton_welcome_sprite.png'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="center-container">
+        <SpriteAnimator image={newtonSprite} speed={4} />
+        <h1>Isaac Newton App</h1>
+        <button className='btn btn-primary rounded-pill'>CONTINUAR</button>
+      </div>
     </div>
   );
 }
