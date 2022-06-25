@@ -1,6 +1,10 @@
 .App {
   text-align: center;
   background-color: #282c34;
+  width: 100vw;
+  height: 100vh;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .App-logo {
@@ -12,13 +16,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.sprite {
-  height: 280px;
-  width: 200px;
-  background: url("./img/newton_welcome_sprite.png") 0px 0px;
-  animation: play 0.8s steps(4) infinite;
 }
 
 @keyframes play {
