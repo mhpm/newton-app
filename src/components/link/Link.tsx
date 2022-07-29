@@ -8,14 +8,19 @@ type Props = {
 const Container = styled.a`
   font-size: 16px;
   color: #7c7c7c;
+
   &:hover {
-    cursor: pointer;
+    color: var(--primary-color);
   }
 `;
 
-function Link({ rel, href, target, children }: Props) {
+function Link({ rel, href, target, children, className }: Props) {
   return (
-    <Container rel={rel} href={href} target={target}>
+    <Container
+      className={['link', className].join(' ')}
+      rel={rel}
+      href={href}
+      target={target}>
       {children}
     </Container>
   );

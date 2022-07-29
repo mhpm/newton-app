@@ -15,11 +15,7 @@ const WelcomePage = () => {
           te diviertas y sea de tu agrado.
         </p>
         <br />
-        <Button
-          label='CONTINUAR'
-          onClick={() => navigate('/main')}
-          className='btn btn-primary rounded-pill'
-        />
+        <Button label='CONTINUAR' onClick={() => navigate('/main')} />
       </div>
     </Transition>
   );

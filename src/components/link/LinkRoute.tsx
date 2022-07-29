@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { HTMLProps } from 'react';
 
 type Props = {
-  children?: string;
   to: string;
-};
+  children?: string;
+} & HTMLProps<HTMLAnchorElement>;
 
 const Container = styled(Link)`
   font-size: 16px;
@@ -12,12 +13,17 @@ const Container = styled(Link)`
   text-decoration: none;
 
   &:hover {
+    color: var(--primary-color);
     text-decoration: underline;
   }
 `;
 
-function LinkRouter({ to, children }: Props) {
-  return <Container to={to}>{children}</Container>;
+function LinkRouter({ to, className, children }: Props) {
+  return (
+    <Container className={['link-router', className].join(' ')} to={to}>
+      {children}
+    </Container>
+  );
 }
 
 export default LinkRouter;

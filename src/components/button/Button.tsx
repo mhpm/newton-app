@@ -1,10 +1,9 @@
 import { HTMLProps } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLProps<HTMLButtonElement> {
+type Props = {
   label: string;
-  classes?: string;
-}
+} & HTMLProps<HTMLButtonElement>;
 
 const Container = styled.button`
   width: auto;
@@ -17,15 +16,19 @@ const Container = styled.button`
   font-size: 1rem;
   box-shadow: 0px 0px 10px var(--primary-color);
 
+  &:hover {
+    filter: brightness(1.1);
+  }
+
   &:active {
-    background-color: #0067d5;
+    filter: brightness(0.95);
   }
 `;
 
-const Button = ({ onClick, label, classes }: Props) => {
+const Button = ({ onClick, label, children, className }: Props) => {
   return (
-    <Container className={['button', classes].join(' ')} onClick={onClick}>
-      {label}
+    <Container className={['button', className].join(' ')} onClick={onClick}>
+      {label || children}
     </Container>
   );
 };

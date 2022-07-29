@@ -62,11 +62,7 @@ const IntroPage = () => {
         <SpriteAnimator image={newtonSprite} speed={4} />
         <h1>Isaac Newton App</h1>
         <br />
-        <Button
-          label='CONTINUAR'
-          onClick={() => navigate('/welcome')}
-          className='btn btn-primary rounded-pill'
-        />
+        <Button label='CONTINUAR' onClick={() => navigate('/welcome')} />
         <CopyRight>
           Developed by{' '}
           <Link
