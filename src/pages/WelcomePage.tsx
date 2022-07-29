@@ -1,6 +1,10 @@
+import { Button } from 'components';
 import Transition from 'components/transition/Transition';
+import { useNavigate } from 'react-router-dom';
 
 const WelcomePage = () => {
+  let navigate = useNavigate();
+
   return (
     <Transition>
       <div className='center-container'>
@@ -10,7 +14,12 @@ const WelcomePage = () => {
           cientifico Isaac Newton y sus 3 famolas leyes del movimiento, espero
           te diviertas y sea de tu agrado.
         </p>
-        <button className='btn btn-primary rounded-pill'>CONTINUAR</button>
+        <br />
+        <Button
+          label='CONTINUAR'
+          onClick={() => navigate('/main')}
+          className='btn btn-primary rounded-pill'
+        />
       </div>
     </Transition>
   );

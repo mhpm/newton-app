@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
 
 const Transition = ({ children }: any) => {
   return (
