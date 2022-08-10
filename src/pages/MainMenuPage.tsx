@@ -10,7 +10,7 @@ const MainMenuPage = () => {
       <div className='center-container'>
         <div className='row'>
           <div className='col-12 mb-5'>
-            <Button label='BIOGRAFÍA' onClick={() => navigate('/main')} />
+            <Button label='BIOGRAFÍA' onClick={() => navigate('/biography')} />
           </div>
           <div className='col-12 mb-5'>
             <Button label='LEYES DE NEWTON' onClick={() => navigate('/main')} />

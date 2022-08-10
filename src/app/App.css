@@ -2,7 +2,8 @@
   text-align: center;
   background-color: #282c34;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   padding-left: 20px;
   padding-right: 20px;
 }

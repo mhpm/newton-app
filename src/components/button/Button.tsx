@@ -25,10 +25,10 @@ const Container = styled.button`
   }
 `;
 
-const Button = ({ onClick, label, children, className }: Props) => {
+const Button = ({ onClick, label, className }: Props) => {
   return (
     <Container className={['button', className].join(' ')} onClick={onClick}>
-      {label || children}
+      {label}
     </Container>
   );
 };

@@ -1,4 +1,5 @@
 import { IntroPage, WelcomePage, MainMenuPage } from 'pages';
+import BiographyPage from 'pages/BiographyPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
@@ -9,6 +10,7 @@ function App() {
         <Route path='/' element={<IntroPage />} />
         <Route path='/welcome' element={<WelcomePage />} />
         <Route path='/main' element={<MainMenuPage />} />
+        <Route path='/biography' element={<BiographyPage />} />
       </Routes>
     </div>
   );

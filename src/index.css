@@ -16,3 +16,7 @@ body {
 .text-description {
   color: var(--secondary-color);
 }
+
+.text-justify {
+  text-align: justify;
+}

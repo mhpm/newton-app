@@ -10,11 +10,10 @@ type Props = {
 const Container = styled(Link)`
   font-size: 16px;
   color: #7c7c7c;
-  text-decoration: none;
+  text-decoration: underline;
 
   &:hover {
     color: var(--primary-color);
-    text-decoration: underline;
   }
 `;
 
