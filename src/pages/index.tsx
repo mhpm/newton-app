@@ -1,3 +1,3 @@
-export { default as IntroPage } from "./IntroPage";
-export { default as WelcomePage } from "./WelcomePage";
-export { default as MainMenuPage } from "./MainMenuPage";
+export { default as IntroPage } from './Main/IntroPage';
+export { default as WelcomePage } from './Main/WelcomePage';
+export { default as MainMenuPage } from './Main/MainMenuPage';

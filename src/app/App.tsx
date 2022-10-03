@@ -1,5 +1,5 @@
 import { IntroPage, WelcomePage, MainMenuPage } from 'pages';
-import BiographyPage from 'pages/BiographyPage';
+import BiographyPage from 'pages/Biography/BiographyPage';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
