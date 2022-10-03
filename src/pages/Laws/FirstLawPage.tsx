@@ -1,6 +1,4 @@
-type Props = {};
-
-const FirstLawPage = (props: Props) => {
+const FirstLawPage = () => {
   return <div>FirstLaw</div>;
 };
 

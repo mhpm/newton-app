@@ -1,6 +1,4 @@
-type Props = {};
-
-function ThirdLawPage({}: Props) {
+function ThirdLawPage() {
   return <div>ThirdLawPage</div>;
 }
 
