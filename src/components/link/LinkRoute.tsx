@@ -11,6 +11,7 @@ const Container = styled(Link)`
   font-size: 16px;
   color: #7c7c7c;
   text-decoration: underline;
+  width: fit-content;
 
   &:hover {
     color: var(--primary-color);

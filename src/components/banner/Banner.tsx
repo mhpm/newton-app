@@ -1,42 +1,10 @@
 import { ReactNode } from 'react';
-import styled from 'styled-components';
+import { Container, Desc, Footer, Title, Image } from './Banner.styles';
 
 type Props = {
   className?: string;
   children?: ReactNode;
 };
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 450px;
-  width: 200px;
-  border-radius: 7px;
-  background-color: #282828;
-  overflow: hidden;
-  color: white;
-`;
-
-const Image = styled.img``;
-
-const Title = styled.div`
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  font-family: sans-serif;
-  margin-top: 10px;
-`;
-
-const Desc = styled.p`
-  text-align: start;
-  font-size: 16px;
-  font-weight: 400;
-  font-family: sans-serif;
-  margin: 15px;
-  color: #7c7c7c;
-  overflow: hidden;
-`;
 
 function Banner({ children, className }: Props) {
   return (
@@ -68,6 +36,14 @@ Banner.Title = function ({ title, className }: { title: string } & Props) {
 
 Banner.Desc = function ({ desc, className }: { desc: string } & Props) {
   return <Desc className={['banner_desc', className].join(' ')}>{desc}</Desc>;
+};
+
+Banner.Footer = function ({ className, children }: Props) {
+  return (
+    <Footer className={['baneer_footer', className].join(' ')}>
+      {children}
+    </Footer>
+  );
 };
 
 export default Banner;

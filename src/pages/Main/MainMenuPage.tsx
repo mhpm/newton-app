@@ -13,7 +13,7 @@ const MainMenuPage = () => {
             <Button label='BIOGRAFÍA' onClick={() => navigate('/biography')} />
           </div>
           <div className='col-12 mb-5'>
-            <Button label='LEYES DE NEWTON' onClick={() => navigate('/main')} />
+            <Button label='LEYES DE NEWTON' onClick={() => navigate('/laws')} />
           </div>
           <div className='col-12 mb-5'>
             <Button label='EJERCICIOS' onClick={() => navigate('/main')} />
