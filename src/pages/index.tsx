@@ -13,3 +13,6 @@ export { default as SecondLawPage } from './Laws/SecondLawPage';
 export { default as ThirdLawPage } from './Laws/ThirdLawPage';
 
 // Training
+
+// Sand Box
+export { default as DiagramsPage } from './Sandbox/DiagramsPage';

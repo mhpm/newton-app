@@ -7,6 +7,7 @@ import {
   FirstLawPage,
   SecondLawPage,
   ThirdLawPage,
+  DiagramsPage,
 } from 'pages';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -23,6 +24,7 @@ function App() {
         <Route path='/first-law' element={<FirstLawPage />} />
         <Route path='/second-law' element={<SecondLawPage />} />
         <Route path='/third-law' element={<ThirdLawPage />} />
+        <Route path='/diagrams' element={<DiagramsPage />} />
       </Routes>
     </div>
   );

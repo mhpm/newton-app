@@ -1,0 +1,13 @@
+.step-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  border: 2px solid #717171;
+  padding: 1rem;
+}
+
+.diagram {
+  height: 100vh;
+}
