@@ -9,8 +9,9 @@ import { Container, Box, DotLeft, DotRight } from './StepBox.styles';
 interface IStepBoxProps {
   id: number;
   name: string;
-  defaultPosition: any;
+  defaultPosition: { x: number; y: number };
   disable?: boolean;
+  position?: { x: number; y: number };
   onLeftClick?: () => void;
   onRightClick?: () => void;
   onDrag?: (event: DraggableEvent, data: DraggableData) => void;
@@ -21,6 +22,7 @@ interface IStepBoxProps {
 const StepBox = ({
   name,
   defaultPosition,
+  position,
   disable,
   onLeftClick,
   onRightClick,
@@ -32,6 +34,7 @@ const StepBox = ({
     <Draggable
       axis='both'
       defaultPosition={defaultPosition}
+      position={position}
       disabled={disable}
       onStart={onStart}
       onDrag={onDrag}

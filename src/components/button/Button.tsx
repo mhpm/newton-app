@@ -1,34 +1,14 @@
 import { HTMLProps } from 'react';
-import styled from 'styled-components';
+import { Container } from './Button.styles';
 
 type Props = {
-  label: string;
+  label?: string;
 } & HTMLProps<HTMLButtonElement>;
 
-const Container = styled.button`
-  width: auto;
-  padding: 1rem 2.5rem;
-  border: none;
-  border-radius: 30px;
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: 500;
-  font-size: 1rem;
-  box-shadow: 0px 0px 10px var(--primary-color);
-
-  &:hover {
-    filter: brightness(1.1);
-  }
-
-  &:active {
-    filter: brightness(0.95);
-  }
-`;
-
-const Button = ({ onClick, label, className }: Props) => {
+const Button = ({ onClick, label, className, children }: Props) => {
   return (
     <Container className={['button', className].join(' ')} onClick={onClick}>
-      {label}
+      {label || children}
     </Container>
   );
 };

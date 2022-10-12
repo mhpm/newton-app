@@ -1,9 +1,4 @@
-import {
-  ButtonHTMLAttributes,
-  HtmlHTMLAttributes,
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect, useState } from 'react';
 import Draggable, {
   DraggableData,
   DraggableEvent,
@@ -47,7 +42,7 @@ const StepsList: ISteBox[] = [
     id: 1,
     name: 'Step 1',
     defaultPosition: { x: 200, y: 0 },
-    position: { x: 0, y: 0 },
+    position: { x: 200, y: 0 },
     backStep: [],
     nextStep: [],
   },
@@ -55,7 +50,7 @@ const StepsList: ISteBox[] = [
     id: 2,
     name: 'Step 2',
     defaultPosition: { x: 800, y: 300 },
-    position: { x: 0, y: 0 },
+    position: { x: 800, y: 300 },
     backStep: [],
     nextStep: [],
   },
@@ -63,7 +58,7 @@ const StepsList: ISteBox[] = [
     id: 3,
     name: 'Step 3',
     defaultPosition: { x: 600, y: 600 },
-    position: { x: 0, y: 0 },
+    position: { x: 600, y: 600 },
     backStep: [],
     nextStep: [],
   },
@@ -80,27 +75,28 @@ const DiagramsPage = () => {
   useEffect(() => getLine(), [connector]);
 
   const getLine = () => {
-    if (Object.keys(connector).length > 1) {
+    if (Object.keys(connector).length > 2) {
       const positions: any[] = [];
 
       Object.keys(connector).forEach((key) => {
         positions.push(connector[key]);
       });
 
-      adjustLine(positions[0].position, positions[1].position);
+      console.log(positions);
 
-      // const newArr = steps.map((item) => {
-      //   if (item.name === step.id) {
-      //     temp = { ...item, position: step.position };
-      //     return temp;
-      //   }
-
-      //   return item;
-      // });
+      adjustLine(
+        positions[0].position,
+        positions[1].position,
+        positions[2].connection
+      );
     }
   };
 
-  function adjustLine(from: any, to: any) {
+  function adjustLine(
+    from: any,
+    to: any,
+    connection: { from: string; to: string }
+  ) {
     console.log(from, to);
 
     var fT = from.y + 92;
@@ -167,37 +163,62 @@ const DiagramsPage = () => {
     // setConnector((prev: any) => ({ ...prev, [step.name]: box }));
   };
 
-  const updateStepList = () => {};
+  const updateConnector = (
+    step: ISteBox,
+    connection: { from: string; to: string }
+  ) => {
+    // const tempStep = steps.find((item) => item.id === step.id);
+    setConnector((prev: any) => ({
+      ...prev,
+      [step.id]: step,
+      connection,
+    }));
+  };
+
+  const updateStepList = (
+    step: ISteBox,
+    position: { x: number; y: number }
+  ) => {
+    console.log(position);
+
+    const newArr = steps.map((item) =>
+      item.id === step.id ? { ...item, position } : item
+    );
+    setSteps(newArr);
+  };
 
   const handleStart = (
     event: DraggableEvent,
     data: DraggableData,
     step: any
   ) => {
-    const { x, y } = data;
     const btn = event.target instanceof Element ? event.target.id : '';
+    const { x, y } = data;
+    updateStepList(step, { x, y });
 
-    if (btn) {
-      console.log(btn);
-      if (btn === 'btnRight') {
-        setIsRightActive(!isRightActive);
-      }
-
-      let tempStep: any = {};
-      const newArr = steps.map((item) => {
-        if (item.id === step.id) {
-          tempStep = { ...item, position: { x, y } };
-          return tempStep;
-        }
-        return item;
-      });
-
-      if (tempStep) {
-        tempStep.position = { x, y };
-        setConnector((prev: any) => ({ ...prev, [tempStep.name]: tempStep }));
-        setSteps(newArr);
-      }
+    if (btn === 'btnRight') {
+      updateConnector(step, { ...connector.connection, from: 'right' });
+    } else if (btn === 'btnLeft') {
+      updateConnector(step, { ...connector.connection, from: 'left' });
     }
+
+    // if (btn) {
+    //   if (btn === 'btnRight' && isRightActive) {
+    //     setIsRightActive(false);
+    //     setConnector({});
+    //   } else if (btn === 'btnRight') {
+    //     setIsRightActive(true);
+    //     updateStepList(step, { x, y });
+    //     updateConnector(step);
+    //   } else if (btn === 'btnLeft' && isRightActive) {
+    //     console.log('Connection completed');
+    //     setIsRightActive(!isRightActive);
+    //     updateStepList(step, { x, y });
+    //     updateConnector(step);
+    //   } else if (btn === 'btnLeft' && !isRightActive) {
+    //     console.log('no hagas nada');
+    //   }
+    // }
   };
 
   const handleRightConnector = (step: any) => {};
