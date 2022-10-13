@@ -11,7 +11,7 @@ type Props = {
   variant?: string;
 } & HTMLProps<HTMLButtonElement>;
 
-enum variantsButton {
+export enum variantsButton {
   default = 'default',
   primary = 'primary',
   secondary = 'secondary',

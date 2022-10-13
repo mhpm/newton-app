@@ -3,6 +3,7 @@ import { SpriteAnimator, Button, Link } from 'components';
 import newtonSprite from 'img/newton_welcome_sprite.png';
 import Transition from 'components/transition/Transition';
 import styled from 'styled-components';
+import { variantsButton } from 'components/button/Button';
 
 const CopyRight = styled.div`
   position: fixed;
@@ -21,7 +22,7 @@ const IntroPage = () => {
         <h1>Isaac Newton App</h1>
         <br />
         <Button
-          variant='primary'
+          variant={variantsButton.primary}
           label='CONTINUAR'
           onClick={() => navigate('/welcome')}
         />
