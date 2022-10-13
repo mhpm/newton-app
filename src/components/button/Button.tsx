@@ -1,15 +1,44 @@
 import { HTMLProps } from 'react';
-import { Container } from './Button.styles';
+import {
+  DefaultButton,
+  PrimaryButton,
+  SecondaryButton,
+  WarningButton,
+} from './Button.styles';
 
 type Props = {
   label?: string;
+  variant?: string;
 } & HTMLProps<HTMLButtonElement>;
 
-const Button = ({ onClick, label, className, children }: Props) => {
+enum variantsButton {
+  default = 'default',
+  primary = 'primary',
+  secondary = 'secondary',
+  warning = 'warning',
+}
+
+const getVariant = (variant: string) =>
+  ({
+    [variantsButton.default]: DefaultButton,
+    [variantsButton.primary]: PrimaryButton,
+    [variantsButton.secondary]: SecondaryButton,
+    [variantsButton.warning]: WarningButton,
+  }[variant]);
+
+const Button = ({
+  onClick,
+  label,
+  variant = variantsButton.primary,
+  className,
+  children,
+}: Props) => {
+  const Custom: any = getVariant(variant);
+
   return (
-    <Container className={['button', className].join(' ')} onClick={onClick}>
+    <Custom className={['button', className].join(' ')} onClick={onClick}>
       {label || children}
-    </Container>
+    </Custom>
   );
 };
 

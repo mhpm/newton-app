@@ -44,7 +44,7 @@ const LawsBannerContainer = (props: Props) => {
             <Banner.Title title={item.title} />
             <Banner.Desc desc={item.desc} />
             <Banner.Footer>
-              <Button onClick={() => navigate(item.route)}>mi contenido</Button>
+              <Button onClick={() => navigate(item.route)} label='Saber Más' />
             </Banner.Footer>
           </Banner>
         </div>
