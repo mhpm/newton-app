@@ -15,6 +15,10 @@ const CopyRight = styled.div`
 const IntroPage = () => {
   let navigate = useNavigate();
 
+  // const { error, isLoading, data } = useFetch(
+  //   'https://reqres.in/api/users?delay=3'
+  // );
+
   return (
     <Transition>
       <div className='center-container'>
