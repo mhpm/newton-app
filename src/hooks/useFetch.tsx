@@ -32,11 +32,8 @@ const useFetch = (
           throw new Error(response.status);
         }
 
-        if (options.method === TypeRequest.get) {
-          const json = await response.json();
-          setData(json);
-        }
-
+        const json = await response.json();
+        setData(json);
         setIsLoading(false);
       } catch (err: any) {
         setIsLoading(false);

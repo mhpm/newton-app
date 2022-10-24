@@ -26,6 +26,16 @@ const Line = styled.div<ILine>`
   transform: ${(props) => `rotate(${props.angle}deg)`};
 `;
 
+const Arrow = styled.i`
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+`;
+
 const lineList: ILine[] = [];
 
 interface ISteBox {
@@ -49,8 +59,8 @@ const StepsList: ISteBox[] = [
   {
     id: 2,
     name: 'Step 2',
-    defaultPosition: { x: 800, y: 300 },
-    position: { x: 800, y: 300 },
+    defaultPosition: { x: 600, y: 0 },
+    position: { x: 600, y: 0 },
     backStep: [],
     nextStep: [],
   },
@@ -66,43 +76,25 @@ const StepsList: ISteBox[] = [
 
 const DiagramsPage = () => {
   const [steps, setSteps] = useState<ISteBox[]>(StepsList);
-  const [connector, setConnector] = useState<any>({});
+  const [connector, setConnector] = useState<any>([]);
   const [lines, setLines] = useState<ILine[]>(lineList);
   const [isRightActive, setIsRightActive] = useState<boolean>(false);
   const [isLeftActive, setIsLeftActive] = useState<boolean>(false);
   const [isConecting, setIsConecting] = useState<boolean>(false);
 
-  useEffect(() => getLine(), [connector]);
+  useEffect(() => {
+    if (connector.length > 1) drawLine(connector[0], connector[1]);
+  }, [connector]);
 
-  const getLine = () => {
-    if (Object.keys(connector).length > 2) {
-      const positions: any[] = [];
-
-      Object.keys(connector).forEach((key) => {
-        positions.push(connector[key]);
-      });
-
-      console.log(positions);
-
-      adjustLine(
-        positions[0].position,
-        positions[1].position,
-        positions[2].connection
-      );
-    }
-  };
-
-  function adjustLine(
-    from: any,
-    to: any,
-    connection: { from: string; to: string }
-  ) {
+  function drawLine(from: any, to: any) {
     console.log(from, to);
 
-    var fT = from.y + 92;
-    var tT = to.y + 90;
-    var fL = from.x + 220;
-    var tL = to.x + 20;
+    if (from.direction === 'right' && to.direction === 'left') {
+      var fT = from.position.y + 48;
+      var tT = to.position.y + 48;
+      var fL = from.position.x + 220;
+      var tL = to.position.x + 20;
+    }
 
     var CA = Math.abs(tT - fT);
 
@@ -141,7 +133,7 @@ const DiagramsPage = () => {
 
     setLines([...lines, line]);
 
-    setConnector({});
+    setConnector([]);
   }
 
   const handleDrag = (
@@ -163,24 +155,29 @@ const DiagramsPage = () => {
     // setConnector((prev: any) => ({ ...prev, [step.name]: box }));
   };
 
-  const updateConnector = (
-    step: ISteBox,
-    connection: { from: string; to: string }
-  ) => {
-    // const tempStep = steps.find((item) => item.id === step.id);
-    setConnector((prev: any) => ({
-      ...prev,
-      [step.id]: step,
-      connection,
-    }));
+  const updateConnector = (step: ISteBox, direction: string) => {
+    const { id, name, position } = step;
+
+    let temp: any = [...connector];
+
+    let item = connector.find((item: any) => item.id === id);
+    if (item) {
+      item = { id, name, position, direction };
+      setConnector([...connector]);
+    } else {
+      setConnector([...connector, { id, name, position, direction }]);
+    }
+
+    // setConnector((prev: any) => ({
+    //   ...prev,
+    //   [step.id]: { id, name, position, direction },
+    // }));
   };
 
   const updateStepList = (
     step: ISteBox,
     position: { x: number; y: number }
   ) => {
-    console.log(position);
-
     const newArr = steps.map((item) =>
       item.id === step.id ? { ...item, position } : item
     );
@@ -197,9 +194,9 @@ const DiagramsPage = () => {
     updateStepList(step, { x, y });
 
     if (btn === 'btnRight') {
-      updateConnector(step, { ...connector.connection, from: 'right' });
+      updateConnector(step, 'right');
     } else if (btn === 'btnLeft') {
-      updateConnector(step, { ...connector.connection, from: 'left' });
+      updateConnector(step, 'left');
     }
 
     // if (btn) {
@@ -227,7 +224,7 @@ const DiagramsPage = () => {
 
   return (
     <div className='diagram p-0 m-0'>
-      <button onClick={getLine}>GET LINE</button>
+      {/* <button onClick={getLine}>GET LINE</button> */}
       {steps.map((step) => (
         <StepBox
           key={step.id}
@@ -243,6 +240,7 @@ const DiagramsPage = () => {
       {lines.map((line) => (
         <Line key={line.id} {...line} />
       ))}
+      {<Arrow />}
     </div>
   );
 };

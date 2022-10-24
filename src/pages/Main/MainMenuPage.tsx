@@ -2,7 +2,7 @@ import { Button, LinkRouter } from 'components';
 import Transition from 'components/transition/Transition';
 import { useNavigate } from 'react-router-dom';
 
-const MainMenuPage = () => {
+const MainMenuPage: React.FunctionComponent = () => {
   let navigate = useNavigate();
 
   return (

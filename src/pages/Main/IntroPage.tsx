@@ -3,7 +3,7 @@ import { SpriteAnimator, Button, Link } from 'components';
 import newtonSprite from 'img/newton_welcome_sprite.png';
 import Transition from 'components/transition/Transition';
 import styled from 'styled-components';
-import { variantsButton } from 'components/button/Button';
+import { variantButton } from 'components/button/Button.model';
 
 const CopyRight = styled.div`
   position: fixed;
@@ -26,16 +26,16 @@ const IntroPage = () => {
         <h1>Isaac Newton App</h1>
         <br />
         <Button
-          variant={variantsButton.primary}
-          label='CONTINUAR'
+          label='INICIAR'
+          variant={variantButton.primary}
           onClick={() => navigate('/welcome')}
         />
         <CopyRight>
           Developed by{' '}
           <Link
             rel='noreferrer'
-            href='https://www.linkedin.com/in/mhpm/'
-            target='_blank'>
+            target='_blank'
+            href='https://www.linkedin.com/in/mhpm/'>
             Michelle Perez Morales
           </Link>{' '}
           ⓒ <i>Copyright</i> 2022

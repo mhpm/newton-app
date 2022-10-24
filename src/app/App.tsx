@@ -12,7 +12,7 @@ import {
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
-function App() {
+const App: React.FunctionComponent = () => {
   return (
     <div className='App'>
       <Routes>
@@ -28,6 +28,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

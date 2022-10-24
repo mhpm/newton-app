@@ -1,43 +1,17 @@
-import { HTMLProps } from 'react';
-import {
-  DefaultButton,
-  PrimaryButton,
-  SecondaryButton,
-  WarningButton,
-} from './Button.styles';
-
-type Props = {
-  label?: string;
-  variant?: string;
-} & HTMLProps<HTMLButtonElement>;
-
-export enum variantsButton {
-  default = 'default',
-  primary = 'primary',
-  secondary = 'secondary',
-  warning = 'warning',
-}
-
-const getVariant = (variant: string) =>
-  ({
-    [variantsButton.default]: DefaultButton,
-    [variantsButton.primary]: PrimaryButton,
-    [variantsButton.secondary]: SecondaryButton,
-    [variantsButton.warning]: WarningButton,
-  }[variant]);
+import { ButtonProps, getVariant, variantButton } from './Button.model';
 
 const Button = ({
   onClick,
   label,
-  variant = variantsButton.primary,
+  variant = variantButton.primary,
   className,
   children,
-}: Props) => {
+}: ButtonProps) => {
   const Custom: any = getVariant(variant);
 
   return (
-    <Custom className={['button', className].join(' ')} onClick={onClick}>
-      {label || children}
+    <Custom className={`button ${className}`} onClick={onClick}>
+      {label ?? children}
     </Custom>
   );
 };
