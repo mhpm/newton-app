@@ -1,15 +1,32 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { colors, StyledProps, sizes } from './Button.types';
 
-export const DefaultButton = styled.button`
+const hover = (props: StyledProps) => {
+  const { color } = props;
+
+  return css`
+    &:hover {
+      background-color: rgba(
+        ${colors[color].rgb[0]},
+        ${colors[color].rgb[1]},
+        ${colors[color].rgb[2]},
+        0.05
+      );
+    }
+  `;
+};
+
+export const DefaultButton = styled.button<StyledProps>`
   width: auto;
   border: none;
   color: white;
-  font-size: 1rem;
-  font-weight: 500;
+  font-weight: bold;
   border-radius: 30px;
-  padding: 1rem 2.5rem;
-  background-color: #cecece;
-  box-shadow: 0px 0px 10px #cecece;
+  cursor: pointer;
+
+  ${(props) => sizes[props.size]};
+  background-color: ${(props) => colors[props.color].hex};
+  box-shadow: 0px 0px 10px ${(props) => colors[props.color].hex};
 
   &:hover {
     filter: brightness(1.1);
@@ -20,17 +37,22 @@ export const DefaultButton = styled.button`
   }
 `;
 
-export const PrimaryButton = styled(DefaultButton)`
-  background-color: var(--primary-color);
-  box-shadow: 0px 0px 10px var(--primary-color);
+export const TextButton = styled(DefaultButton)`
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  color: ${(props) => colors[props.color].hex};
+
+  ${hover}
 `;
 
-export const SecondaryButton = styled(DefaultButton)`
-  background-color: var(--secondary-color);
-  box-shadow: 0px 0px 10px var(--secondary-color);
-`;
+export const ContainedButton = styled(DefaultButton)``;
 
-export const WarningButton = styled(DefaultButton)`
-  background-color: var(--warning-color);
-  box-shadow: 0px 0px 10px var(--warning-color);
+export const OutlinedButton = styled(DefaultButton)`
+  box-shadow: none;
+  background-color: transparent;
+  border: 1.5px solid ${(props) => colors[props.color].hex};
+  color: ${(props) => colors[props.color].hex};
+
+  ${hover}
 `;

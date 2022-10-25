@@ -1,27 +1,22 @@
-import { HTMLProps } from 'react';
-import {
-  DefaultButton,
-  PrimaryButton,
-  SecondaryButton,
-  WarningButton,
-} from './Button.styles';
+import { ButtonHTMLAttributes } from 'react';
+import { TextButton, ContainedButton, OutlinedButton } from './Button.styles';
+
+export const defaultProps = {
+  variant: 'contained',
+  color: 'primary',
+  size: 'normal',
+};
 
 export type ButtonProps = {
   label?: string;
-  variant?: variantButton;
-} & HTMLProps<HTMLButtonElement>;
+  variant?: 'text' | 'contained' | 'outlined';
+  color?: 'primary' | 'secondary' | 'warning' | 'error';
+  size?: 'small' | 'normal' | 'large';
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export enum variantButton {
-  default = 'default',
-  primary = 'primary',
-  secondary = 'secondary',
-  warning = 'warning',
-}
-
-export const getVariant = (variant: string) =>
+export const getVariant = (variant: string = 'primary') =>
   ({
-    [variantButton.default]: DefaultButton,
-    [variantButton.primary]: PrimaryButton,
-    [variantButton.secondary]: SecondaryButton,
-    [variantButton.warning]: WarningButton,
+    text: TextButton,
+    contained: ContainedButton,
+    outlined: OutlinedButton,
   }[variant]);

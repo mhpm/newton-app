@@ -1,19 +1,27 @@
-import { ButtonProps, getVariant, variantButton } from './Button.model';
+import { ButtonProps, defaultProps, getVariant } from './Button.model';
 
 const Button = ({
-  onClick,
   label,
-  variant = variantButton.primary,
+  variant,
+  color,
+  size,
+  onClick,
   className,
   children,
 }: ButtonProps) => {
   const Custom: any = getVariant(variant);
 
   return (
-    <Custom className={`button ${className}`} onClick={onClick}>
+    <Custom
+      size={size}
+      color={color}
+      className={`button ${className}`}
+      onClick={onClick}>
       {label ?? children}
     </Custom>
   );
 };
+
+Button.defaultProps = defaultProps;
 
 export default Button;
