@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 export type StyledProps = {
   color: 'primary' | 'secondary' | 'warning' | 'error';
   size: 'small' | 'normal' | 'large';
+  disabled: boolean;
 };
 
 export const sizes = {

@@ -20,7 +20,7 @@ const Container = styled(Link)`
 
 function LinkRouter({ to, className, children }: Props) {
   return (
-    <Container className={`link-router ${className}`} to={to}>
+    <Container className={['link-router', className].join(' ')} to={to}>
       {children}
     </Container>
   );

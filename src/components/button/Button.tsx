@@ -1,10 +1,11 @@
-import { ButtonProps, defaultProps, getVariant } from './Button.model';
+import { ButtonProps, getVariant } from './Button.model';
 
 const Button = ({
   label,
   variant,
   color,
   size,
+  disabled,
   onClick,
   className,
   children,
@@ -13,13 +14,20 @@ const Button = ({
 
   return (
     <Custom
+      disabled={disabled}
       size={size}
       color={color}
-      className={`button ${className}`}
+      className={['button', className].join(' ')}
       onClick={onClick}>
       {label ?? children}
     </Custom>
   );
+};
+
+const defaultProps = {
+  variant: 'contained',
+  color: 'primary',
+  size: 'normal',
 };
 
 Button.defaultProps = defaultProps;

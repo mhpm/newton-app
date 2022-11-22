@@ -18,6 +18,13 @@ const Template: ComponentStory<typeof Button> = (args) => (
       <Button variant='text' label='Secondary' color='secondary' size='small' />
       <Button variant='text' label='Warning' color='warning' size='small' />
       <Button variant='text' label='Error' color='error' size='small' />
+      <Button
+        disabled
+        label='Disabled'
+        variant='text'
+        color='error'
+        size='small'
+      />
       <br />
       <br />
       <Button
@@ -39,6 +46,13 @@ const Template: ComponentStory<typeof Button> = (args) => (
         size='small'
       />
       <Button variant='contained' label='Error' color='error' size='small' />
+      <Button
+        disabled
+        label='Disabled'
+        variant='contained'
+        color='error'
+        size='small'
+      />
       <br />
       <br />
       <Button variant='outlined' label='Primary' color='primary' size='small' />
@@ -50,6 +64,13 @@ const Template: ComponentStory<typeof Button> = (args) => (
       />
       <Button variant='outlined' label='Warning' color='warning' size='small' />
       <Button variant='outlined' label='Error' color='error' size='small' />
+      <Button
+        disabled
+        label='Disabled'
+        variant='outlined'
+        color='error'
+        size='small'
+      />
       <br />
       <br />
     </div>
@@ -118,6 +139,5 @@ const Template: ComponentStory<typeof Button> = (args) => (
   </div>
 );
 
-export const Primary = Template.bind({});
+export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = { label: 'Button' };

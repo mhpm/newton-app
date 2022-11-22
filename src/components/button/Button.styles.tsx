@@ -16,6 +16,18 @@ const hover = (props: StyledProps) => {
   `;
 };
 
+const disabled = (props: StyledProps) => {
+  const { disabled } = props;
+  return (
+    disabled &&
+    css`
+      filter: grayscale(1);
+      opacity: 0.5;
+      pointer-events: none;
+    `
+  );
+};
+
 export const DefaultButton = styled.button<StyledProps>`
   width: auto;
   border: none;
@@ -24,9 +36,14 @@ export const DefaultButton = styled.button<StyledProps>`
   border-radius: 30px;
   cursor: pointer;
 
-  ${(props) => sizes[props.size]};
   background-color: ${(props) => colors[props.color].hex};
-  box-shadow: 0px 0px 10px ${(props) => colors[props.color].hex};
+  ${(props) => sizes[props.size]};
+
+  ${disabled}
+
+  @media (max-width: 576px) {
+    width: inherit;
+  }
 
   &:hover {
     filter: brightness(1.1);

@@ -17,7 +17,7 @@ const Container = styled.a`
 function Link({ rel, href, target, children, className }: Props) {
   return (
     <Container
-      className={`link ${className}`}
+      className={['link', className].join(' ')}
       rel={rel}
       href={href}
       target={target}>
