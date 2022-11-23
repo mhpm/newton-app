@@ -39,4 +39,5 @@ export const Footer = styled.div`
   width: 100%;
   height: 80px;
   text-align: center;
+  padding: 10px;
 `;

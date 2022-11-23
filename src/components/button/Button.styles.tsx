@@ -1,5 +1,35 @@
 import styled, { css } from 'styled-components';
-import { colors, StyledProps, sizes } from './Button.types';
+
+type StyledProps = {
+  color: 'primary' | 'secondary' | 'warning' | 'error';
+  size: 'small' | 'normal' | 'large';
+  disabled: boolean;
+};
+
+const sizes = {
+  small: css`
+    font-size: 12px;
+    height: 32px;
+    padding: 0px 16px;
+  `,
+  normal: css`
+    font-size: 14px;
+    height: 44px;
+    padding: 0px 24px;
+  `,
+  large: css`
+    font-size: 16px;
+    height: 52px;
+    padding: 0px 32px;
+  `,
+};
+
+const colors = {
+  primary: { hex: '#007bff', rgb: [0, 123, 255] },
+  secondary: { hex: '#7c7c7c', rgb: [124, 124, 124] },
+  warning: { hex: '#ffc107', rgb: [255, 193, 7] },
+  error: { hex: '#ff6347', rgb: [255, 99, 71] },
+};
 
 const hover = (props: StyledProps) => {
   const { color } = props;
@@ -42,7 +72,7 @@ export const DefaultButton = styled.button<StyledProps>`
   ${disabled}
 
   @media (max-width: 576px) {
-    width: inherit;
+    width: 100%;
   }
 
   &:hover {
@@ -55,7 +85,6 @@ export const DefaultButton = styled.button<StyledProps>`
 `;
 
 export const TextButton = styled(DefaultButton)`
-  border: none;
   box-shadow: none;
   background-color: transparent;
   color: ${(props) => colors[props.color].hex};

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { Container, Desc, Footer, Title, Image } from './Banner.styles';
 
 type Props = {

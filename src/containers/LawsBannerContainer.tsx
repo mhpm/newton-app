@@ -28,9 +28,7 @@ const data = [
   },
 ];
 
-type Props = {};
-
-const LawsBannerContainer = (props: Props) => {
+const LawsBannerContainer = () => {
   let navigate = useNavigate();
 
   return (

@@ -3,9 +3,9 @@ import { TextButton, ContainedButton, OutlinedButton } from './Button.styles';
 
 export type ButtonProps = {
   label?: string;
-  variant?: 'text' | 'contained' | 'outlined';
-  color?: 'primary' | 'secondary' | 'warning' | 'error';
-  size?: 'small' | 'normal' | 'large';
+  variant: 'text' | 'contained' | 'outlined';
+  color: 'primary' | 'secondary' | 'warning' | 'error';
+  size: 'small' | 'normal' | 'large';
   disabled?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
