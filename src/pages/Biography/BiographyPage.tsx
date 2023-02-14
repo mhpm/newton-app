@@ -122,7 +122,7 @@ const BiographyPage = () => {
     <Transition>
       <div className='center-container pt-5'>
         <h2>Biografía</h2>
-        <div className='container text-description row mt-4 mb-5 w-auto border-rounded'>
+        <div className='container text-description row mt-4 mb-5 w-100 border-rounded'>
           <Carousel id='carouselBio'>
             {images.map((item) => (
               <Carousel.Image
