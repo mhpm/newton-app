@@ -11,6 +11,14 @@ const CopyRight = styled.div`
   color: #7c7c7c;
 `;
 
+const Version = styled.div`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  color: #7c7c7c;
+`;
+
 const IntroPage = () => {
   let navigate = useNavigate();
 
@@ -38,6 +46,9 @@ const IntroPage = () => {
             Michelle Perez Morales
           </Link>{' '}
           ⓒ <i>Copyright</i> 2022
+          <Version>
+            <i>v</i> {process.env.REACT_APP_VERSION}
+          </Version>
         </CopyRight>
       </div>
     </Transition>

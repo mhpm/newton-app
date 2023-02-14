@@ -1,6 +1,6 @@
 {
   "name": "newton-app",
-  "version": "0.6.1",
+  "version": "1.6.1",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
