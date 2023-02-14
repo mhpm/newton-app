@@ -29,11 +29,12 @@ Carousel.Image = function CarouselImage({
   image: string;
 }) {
   return (
-    <img
-      src={image}
+    <div
       className={cx('carousel-item', className, {
         active,
-      })}></img>
+      })}>
+      <img className='d-block w-100' src={image} />
+    </div>
   );
 };
 
