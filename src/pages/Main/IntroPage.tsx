@@ -45,11 +45,11 @@ const IntroPage = () => {
             href='https://www.linkedin.com/in/mhpm/'>
             Michelle Perez Morales
           </Link>{' '}
-          ⓒ <i>Copyright</i> 2022
-          <Version>
-            <i>v</i> {process.env.REACT_APP_VERSION}
-          </Version>
+          <br />ⓒ <i>Copyright</i> 2022
         </CopyRight>
+        <Version>
+          <i>v</i> {process.env.REACT_APP_VERSION}
+        </Version>
       </div>
     </Transition>
   );

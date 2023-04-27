@@ -32,7 +32,7 @@ const LawsBannerContainer = () => {
   let navigate = useNavigate();
 
   return (
-    <>
+    <div className='row'>
       {data.map((item) => (
         <div
           key={item.id}
@@ -47,7 +47,7 @@ const LawsBannerContainer = () => {
           </Banner>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

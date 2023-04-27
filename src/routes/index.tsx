@@ -10,6 +10,7 @@ import {
   SecondLawPage,
   ThirdLawPage,
   DiagramsPage,
+  ListPage,
 } from 'pages';
 
 // lazy imports
@@ -23,11 +24,14 @@ const RouteList = () => {
         <Route path='/welcome' element={<WelcomePage />} />
         <Route path='/main' element={<MainMenuPage />} />
         <Route path='/biography' element={<BiographyPage />} />
+
         <Route path='/laws' element={<LawsMenuPage />} />
-        <Route path='/first-law' element={<FirstLawPage />} />
-        <Route path='/second-law' element={<SecondLawPage />} />
-        <Route path='/third-law' element={<ThirdLawPage />} />
+        <Route path='/laws/first-law' element={<FirstLawPage />} />
+        <Route path='/laws/second-law' element={<SecondLawPage />} />
+        <Route path='/laws/third-law' element={<ThirdLawPage />} />
+
         <Route path='/diagrams' element={<DiagramsPage />} />
+        <Route path='/list' element={<ListPage />} />
       </Routes>
     </Suspense>
   );
